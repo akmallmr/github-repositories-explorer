@@ -1,35 +1,18 @@
 'use client';
 
-import { useGetRepositoriesGithub } from '@/api/services/home';
-import { useEffect, useRef } from 'react';
+import { useSearchProfileGithub } from '@/api/services/home';
+import { useCallback, useEffect, useRef } from 'react';
 import { useHomeContext } from '../context/HomeContext';
-import { GithubRepo } from './components';
 
 const SearchInput = () => {
   const pendingUserRef = useRef('');
-  const { search, setSearch, userRepoList, setUserRepoList, setSearchUserName } = useHomeContext();
-  const {
-    data,
-    isError,
-    isLoading,
-    refetch,
-    isFetching: searching,
-  } = useGetRepositoriesGithub(search);
+  const { search, setSearch, userRepoList, setSearchUserName, searchUserName } = useHomeContext();
+  const { refetch, isFetching: searching } = useSearchProfileGithub(searchUserName);
 
   useEffect(() => {
-    if (data && !isLoading && !isError) {
-      const username = pendingUserRef.current;
-      setUserRepoList((prev: GithubRepo[]) => {
-        if (prev.some((item: GithubRepo) => item.username === username)) {
-          return prev;
-        } else {
-          return [{ username, repos: data }, ...prev];
-        }
-      });
-      setSearch('');
-      setSearchUserName('');
-    }
-  }, [data, isLoading, isError, setSearch, setUserRepoList, setSearchUserName]);
+    if (!searchUserName) return;
+    refetch();
+  }, [searchUserName, refetch]);
 
   const handleFetch = () => {
     const trimmed = search.trim();
@@ -39,7 +22,6 @@ const SearchInput = () => {
 
     pendingUserRef.current = trimmed;
     setSearchUserName(trimmed);
-    refetch();
   };
 
   return (
