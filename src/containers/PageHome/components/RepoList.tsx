@@ -1,5 +1,4 @@
 import { useGetRepositoriesGithub } from '@/api/services/home';
-import { ChevronDown, FolderGit2, Github, Link, Star } from 'lucide-react';
 import { useHomeContext } from '../context/HomeContext';
 import AccordionProfile from './AccordionProfile';
 

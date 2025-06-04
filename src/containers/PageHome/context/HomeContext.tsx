@@ -1,12 +1,12 @@
 import React, { createContext, ReactNode, useContext, useState } from 'react';
-import { IHomeContext } from './home';
+import { GithubRepo, IHomeContext } from './home';
 
 const HomeContext = createContext<IHomeContext | undefined>(undefined);
 
-const HomeProvider: React.FC<{ children: ReactNode }> = ({ children }: any) => {
+const HomeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const [search, setSearch] = useState<string>('');
-  const [userRepoList, setUserRepoList] = useState<any[]>([]);
-  const [searchUserName, setSearchUserName] = useState('');
+  const [userRepoList, setUserRepoList] = useState<GithubRepo[]>([]);
+  const [searchUserName, setSearchUserName] = useState<string>('');
 
   return (
     <HomeContext.Provider

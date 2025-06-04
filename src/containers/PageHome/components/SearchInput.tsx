@@ -1,13 +1,13 @@
 'use client';
 
-import React, { useEffect, useRef } from 'react';
-import { useHomeContext } from '../context/HomeContext';
 import { useGetRepositoriesGithub } from '@/api/services/home';
+import { useEffect, useRef } from 'react';
+import { useHomeContext } from '../context/HomeContext';
+import { GithubRepo } from './components';
 
 const SearchInput = () => {
   const pendingUserRef = useRef('');
-  const { search, setSearch, userRepoList, setUserRepoList, searchUserName, setSearchUserName } =
-    useHomeContext();
+  const { search, setSearch, userRepoList, setUserRepoList, setSearchUserName } = useHomeContext();
   const {
     data,
     isError,
@@ -19,8 +19,9 @@ const SearchInput = () => {
   useEffect(() => {
     if (data && !isLoading && !isError) {
       const username = pendingUserRef.current;
-      setUserRepoList((prev) => {
-        if (prev.some((item) => item.username === username)) {
+      setUserRepoList((prev: GithubRepo[]) => {
+        console.log('prev', prev);
+        if (prev.some((item: GithubRepo) => item.username === username)) {
           return prev;
         } else {
           return [{ username, repos: data }, ...prev];
@@ -29,7 +30,7 @@ const SearchInput = () => {
       setSearch('');
       setSearchUserName('');
     }
-  }, [data, isLoading, isError]);
+  }, [data, isLoading, isError, setSearch, setUserRepoList, setSearchUserName]);
 
   const handleFetch = () => {
     const trimmed = search.trim();

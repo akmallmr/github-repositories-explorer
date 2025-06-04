@@ -1,8 +1,8 @@
 import { ChevronDown, FolderGit2, Github, Link, Star } from 'lucide-react';
-import { GithubRepo } from './components';
+import { GithubRepo, GithubRepos } from './components';
 import { useState } from 'react';
 
-const AccordionProfile = ({ data }: any) => {
+const AccordionProfile = ({ data }: { data: GithubRepo[] }) => {
   console.log(data);
   const [openIndexes, setOpenIndexes] = useState<number[]>([]);
 
@@ -34,8 +34,8 @@ const AccordionProfile = ({ data }: any) => {
             <div className='p-2 rounded-b-xl bg-slate-50'>
               {user.repos.length === 0 && 'No Repositories'}
               <div className='flex flex-col gap-5'>
-                {user?.repos?.map((item: any) => {
-                  if (!item) return <p>No Repositories</p>;
+                {user?.repos?.map((item: GithubRepos) => {
+                  if (!item) return <p key={item}>No Repositories</p>;
                   return (
                     <div key={item.id} className='bg-slate-500 p-2 rounded-xl shadow-2xl'>
                       <div className='flex flex-row justify-between items-center'>

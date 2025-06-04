@@ -1,14 +1,14 @@
 'use client';
 
-import { useQuery, QueryKey } from '@tanstack/react-query';
+import { QueryKey, useQuery, UseQueryOptions, UseQueryResult } from '@tanstack/react-query';
 import api from '../clients';
 
-export const useApiQuery = <TData = unknown>(
+export function useApiQuery<TData = unknown, TError = Error>(
   key: QueryKey,
   url: string,
-  options?: Parameters<typeof useQuery<TData>>[0]
-) => {
-  return useQuery<TData>({
+  options?: Omit<UseQueryOptions<TData, TError, TData, QueryKey>, 'queryKey' | 'queryFn'>
+): UseQueryResult<TData, TError> {
+  return useQuery<TData, TError, TData, QueryKey>({
     queryKey: key,
     queryFn: async () => {
       const res = await api.get<TData>(url);
@@ -16,4 +16,4 @@ export const useApiQuery = <TData = unknown>(
     },
     ...options,
   });
-};
+}
