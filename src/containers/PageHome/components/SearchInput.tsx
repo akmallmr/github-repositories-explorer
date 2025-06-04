@@ -20,7 +20,6 @@ const SearchInput = () => {
     if (data && !isLoading && !isError) {
       const username = pendingUserRef.current;
       setUserRepoList((prev: GithubRepo[]) => {
-        console.log('prev', prev);
         if (prev.some((item: GithubRepo) => item.username === username)) {
           return prev;
         } else {

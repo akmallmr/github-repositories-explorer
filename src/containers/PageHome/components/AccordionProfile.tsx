@@ -3,7 +3,6 @@ import { GithubRepo, GithubRepos } from './components';
 import { useState } from 'react';
 
 const AccordionProfile = ({ data }: { data: GithubRepo[] }) => {
-  console.log(data);
   const [openIndexes, setOpenIndexes] = useState<number[]>([]);
 
   const toggleAccordion = (idx: number) => {
