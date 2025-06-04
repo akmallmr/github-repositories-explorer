@@ -1,7 +1,7 @@
 'use client';
 
 import { useSearchProfileGithub } from '@/api/services/home';
-import { useCallback, useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useHomeContext } from '../context/HomeContext';
 
 const SearchInput = () => {
