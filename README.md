@@ -42,9 +42,13 @@ git clone https://github.com/your-username/github-repositories-explorer.git
 cd github-repositories-explorer
 ```
 
-### 2. Create file .env or .env. with copy and paste the contents
+### 2. Create file .env or .env. with copy and paste the contents (RECOMMENDED)
+I suggest you to create file .env or .env.local at the top of your folder structure. After that copy all variables in file .env.example. Because you have to fill NEXT_PUBLIC_BASE_URL with URL https://api.github.com. Its a MUST.
 
 ```bash
+touch .env
+OR
+touch .env.local
 cp .env.example .env.local
 ```
 
