@@ -69,6 +69,12 @@ yarn dev
 npm run dev
 ```
 
+### 5. Run the unit test (Still Develop for the others components)
+*to be honest, I was completely assisted by AI
+
+```bash
+yarn test
+```
 
 🌍 Live Demo
 https://repo-explorer-akmallmr.vercel.app/
