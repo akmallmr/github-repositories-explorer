@@ -1,7 +1,6 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import AccordionItem from '../AccordionItem';
 import { useGetRepositoriesGithub } from '@/api/services/home';
+import { fireEvent, render, screen } from '@testing-library/react';
+import AccordionItem from '../AccordionItem';
 
 jest.mock('@/api/services/home');
 

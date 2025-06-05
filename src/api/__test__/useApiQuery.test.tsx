@@ -43,11 +43,11 @@
 // });
 
 // __tests__/useApiQuery.test.tsx
-import React from "react";
-import { render, screen, waitFor } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { useApiQuery } from "../hooks/useApiQuery"; // Adjust path as needed
+import { render, screen, waitFor } from "@testing-library/react";
+import React from "react";
 import api from "../clients";
+import { useApiQuery } from "../hooks/useApiQuery"; // Adjust path as needed
 
 jest.mock("../clients");
 

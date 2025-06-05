@@ -1,8 +1,7 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import SearchInput from '../SearchInput';
-import { useHomeContext } from '../../context/HomeContext';
 import { useSearchProfileGithub } from '@/api/services/home';
+import { fireEvent, render, screen } from '@testing-library/react';
+import { useHomeContext } from '../../context/HomeContext';
+import SearchInput from '../SearchInput';
 
 jest.mock('../../context/HomeContext');
 jest.mock('@/api/services/home');
