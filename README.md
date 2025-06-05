@@ -69,3 +69,8 @@ npm run dev
 🌍 Live Demo
 https://repo-explorer-akmallmr.vercel.app/
 Deployed on Vercel
+
+Made by akmallmr, reach me on:
+
+✉️ akmallmr@gmail.com
+🖥️ https://www.linkedin.com/in/akmalmr/
